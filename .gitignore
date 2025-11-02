@@ -205,3 +205,20 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Dữ liệu và Models
+_data/
+_models/
+*.joblib
+*.pth
+*.pkl
+
+# Môi trường ảo
+venv/
+.env/
+
+# File của IDE/OS
+.vscode/
+.idea/
+__pycache__/
+*.DS_Store
