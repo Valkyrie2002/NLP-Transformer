@@ -7,7 +7,7 @@ import pandas as pd
 # Cấu hình trang
 st.set_page_config(
     page_title="Phân loại Cảm xúc Tiếng Việt (3 nhãn)", 
-    page_icon="🤖",
+    page_icon="📊",
     layout="wide"
 )
 
@@ -33,7 +33,7 @@ db = load_database()
 
 # Sidebar - Lịch sử phân loại
 with st.sidebar:
-    st.header("📊 Lịch sử Phân loại")
+    st.header("Lịch sử Phân loại")
     
     # Thống kê
     total_count = db.get_count()
@@ -41,38 +41,38 @@ with st.sidebar:
     
     # Nút xuất CSV
     if total_count > 0:
-        if st.button("📥 Xuất CSV", use_container_width=True):
+        if st.button("Xuất CSV", use_container_width=True):
             try:
                 csv_path = db.export_to_csv("history_export.csv")
                 with open(csv_path, "rb") as f:
                     st.download_button(
-                        label="⬇️ Tải xuống CSV",
+                        label="Tải xuống CSV",
                         data=f,
                         file_name=f"sentiment_history_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
                         mime="text/csv",
                         use_container_width=True
                     )
-                st.success("✅ Đã tạo file CSV!")
+                st.success("Đã tạo file CSV!")
             except Exception as e:
                 st.error(f"Lỗi khi xuất CSV: {e}")
         
         # Nút xóa lịch sử
-        if st.button("🗑️ Xóa lịch sử", use_container_width=True):
+        if st.button("Xóa lịch sử", use_container_width=True):
             if 'confirm_clear' not in st.session_state:
                 st.session_state.confirm_clear = True
         
         # Xác nhận xóa
         if st.session_state.get('confirm_clear', False):
-            st.warning("⚠️ Bạn có chắc chắn muốn xóa toàn bộ lịch sử?")
+            st.warning("Bạn có chắc chắn muốn xóa toàn bộ lịch sử?")
             col1, col2 = st.columns(2)
             with col1:
-                if st.button("✅ Có", use_container_width=True):
+                if st.button("Có", use_container_width=True):
                     db.clear_history()
                     st.session_state.confirm_clear = False
                     st.session_state.last_prediction = None
                     st.rerun()
             with col2:
-                if st.button("❌ Không", use_container_width=True):
+                if st.button("Không", use_container_width=True):
                     st.session_state.confirm_clear = False
                     st.rerun()
         
@@ -103,13 +103,13 @@ with st.sidebar:
         st.info("Chưa có lịch sử phân loại")
 
 # Main content
-st.title("🤖 Trợ lý Phân loại Cảm xúc Tiếng Việt (3 nhãn)")
-st.write("Nhập một câu tiếng Việt bên dưới để AI phân loại cảm xúc: POSITIVE (Tích cực), NEUTRAL (Trung lập), NEGATIVE (Tiêu cực)")
+st.title("Trợ lý Phân loại Cảm xúc Tiếng Việt (3 nhãn)")
+st.write("Nhập một câu tiếng Việt bên dưới để AI phân loại cảm xúc: POSITIVE  (Tích cực), NEUTRAL (Trung lập), NEGATIVE (Tiêu cực)")
 
 # Giao diện nhập liệu
 text_input = st.text_area("Nhập văn bản tại đây:", height=100, placeholder="VD: Hôm nay tôi rất vui...")
 
-if st.button("Phân tích cảm xúc 🚀", type="primary"):
+if st.button("Phân tích cảm xúc", type="primary"):
     # Kiểm tra input rỗng
     if not text_input.strip():
         st.toast("⚠️ Vui lòng nhập nội dung!", icon="⚠️")
@@ -150,7 +150,7 @@ if st.button("Phân tích cảm xúc 🚀", type="primary"):
                 # Reload để cập nhật sidebar lịch sử
                 st.rerun()
             except Exception as e:
-                st.toast(f"❌ Lỗi khi phân tích: {str(e)}", icon="❌")
+                st.toast(f"Lỗi khi phân tích: {str(e)}", icon="❌")
                 st.error(f"Lỗi khi phân tích: {e}")
 
 # Hiển thị kết quả (nếu có)

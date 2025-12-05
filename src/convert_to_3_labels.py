@@ -36,14 +36,14 @@ def convert_dataset():
     output_dir = Path('../data/processed_3labels')
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    print("🔄 Bắt đầu chuyển đổi dataset từ 6 nhãn sang 3 nhãn...\n")
+    print("Bắt đầu chuyển đổi dataset từ 6 nhãn sang 3 nhãn...\n")
     
     # Chuyển đổi từng split
     for split in ['train', 'val', 'test']:
         input_path = f'../data/processed/{split}.csv'
         output_path = output_dir / f'{split}.csv'
         
-        print(f"📂 Xử lý {split}.csv...")
+        print(f"Xử lý {split}.csv...")
         
         # Đọc file
         df = pd.read_csv(input_path, encoding='utf-8')
@@ -59,7 +59,7 @@ def convert_dataset():
         
         # Kiểm tra có missing values không (do nhãn không khớp)
         if df['emotion'].isna().any():
-            print(f"  ⚠️ Cảnh báo: Có {df['emotion'].isna().sum()} nhãn không khớp mapping!")
+            print(f"  Cảnh báo: Có {df['emotion'].isna().sum()} nhãn không khớp mapping!")
             df = df.dropna(subset=['emotion'])
         
         # Hiển thị phân bố 3 nhãn mới
@@ -69,12 +69,12 @@ def convert_dataset():
         
         # Lưu file
         df.to_csv(output_path, index=False, encoding='utf-8')
-        print(f"  ✅ Đã lưu: {output_path} ({len(df)} samples)\n")
+        print(f"  Đã lưu: {output_path} ({len(df)} samples)\n")
     
-    print("✅ Hoàn thành chuyển đổi!\n")
+    print("Hoàn thành chuyển đổi!\n")
     
     # Tổng kết
-    print("📊 Tổng kết:")
+    print("Tổng kết:")
     total_train = len(pd.read_csv(output_dir / 'train.csv'))
     total_val = len(pd.read_csv(output_dir / 'val.csv'))
     total_test = len(pd.read_csv(output_dir / 'test.csv'))

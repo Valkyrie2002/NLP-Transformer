@@ -23,7 +23,7 @@ class DataCollector:
         ~16,000 Vietnamese student feedback samples
         """
         print("\n" + "="*60)
-        print("📥 Collecting UIT-VSFC Dataset...")
+        print("Collecting UIT-VSFC Dataset...")
         print("="*60)
         
         try:
@@ -54,15 +54,15 @@ class DataCollector:
             
             self.collected_data.append(df)
             
-            print(f"✅ Downloaded: {len(df)} samples")
-            print(f"💾 Saved to: {output_path}")
-            print(f"\n📊 Label distribution:")
+            print(f"Downloaded: {len(df)} samples")
+            print(f"Saved to: {output_path}")
+            print(f"\nLabel distribution:")
             print(df['emotion'].value_counts())
             
             return df
             
         except Exception as e:
-            print(f"❌ Failed to collect UIT-VSFC: {e}")
+            print(f"Failed to collect UIT-VSFC: {e}")
             return None
     
     def collect_uit_vsmec(self):
@@ -70,7 +70,7 @@ class DataCollector:
         Collect UIT-VSMEC dataset (your current dataset source)
         """
         print("\n" + "="*60)
-        print("📥 Collecting UIT-VSMEC Dataset...")
+        print("Collecting UIT-VSMEC Dataset...")
         print("="*60)
         
         try:
@@ -112,15 +112,15 @@ class DataCollector:
             
             self.collected_data.append(df)
             
-            print(f"✅ Downloaded: {len(df)} samples")
-            print(f"💾 Saved to: {output_path}")
-            print(f"\n📊 Label distribution:")
+            print(f"Downloaded: {len(df)} samples")
+            print(f"Saved to: {output_path}")
+            print(f"\nLabel distribution:")
             print(df['emotion'].value_counts())
             
             return df
             
         except Exception as e:
-            print(f"❌ Failed to collect UIT-VSMEC: {e}")
+            print(f"Failed to collect UIT-VSMEC: {e}")
             return None
     
     def merge_with_current_data(self, current_data_dir='../data/processed_3labels'):
@@ -128,7 +128,7 @@ class DataCollector:
         Merge collected data with current dataset
         """
         print("\n" + "="*60)
-        print("🔄 Merging with current dataset...")
+        print("Merging with current dataset...")
         print("="*60)
         
         # Load current data
@@ -161,8 +161,8 @@ class DataCollector:
         output_path = self.output_dir / 'merged_dataset.csv'
         df_merged.to_csv(output_path, index=False, encoding='utf-8')
         
-        print(f"\n💾 Merged dataset saved to: {output_path}")
-        print(f"\n📊 Final label distribution:")
+        print(f"\nMerged dataset saved to: {output_path}")
+        print(f"\nFinal label distribution:")
         print(df_merged['emotion'].value_counts())
         
         return df_merged
@@ -172,7 +172,7 @@ class DataCollector:
         Split merged dataset into train/val/test
         """
         print("\n" + "="*60)
-        print("✂️ Splitting dataset...")
+        print("Splitting dataset...")
         print("="*60)
         
         from sklearn.model_selection import train_test_split
@@ -197,14 +197,14 @@ class DataCollector:
         val.to_csv(output_path / 'val.csv', index=False, encoding='utf-8')
         test.to_csv(output_path / 'test.csv', index=False, encoding='utf-8')
         
-        print(f"\n💾 Saved to: {output_path}")
+        print(f"\nSaved to: {output_path}")
         
         return train, val, test
 
 
 def main():
     print("="*60)
-    print("🚀 VIETNAMESE SENTIMENT DATA COLLECTION")
+    print("VIETNAMESE SENTIMENT DATA COLLECTION")
     print("="*60)
     
     collector = DataCollector()
@@ -220,10 +220,10 @@ def main():
     collector.split_and_save(df_merged)
     
     print("\n" + "="*60)
-    print("✅ DATA COLLECTION COMPLETED!")
+    print("DATA COLLECTION COMPLETED!")
     print("="*60)
     
-    print("\n💡 Next steps:")
+    print("\nNext steps:")
     print("1. Review collected data in: ../data/collected/")
     print("2. Check merged dataset: ../data/collected/merged_dataset.csv")
     print("3. New train/val/test in: ../data/processed_3labels_extended/")
