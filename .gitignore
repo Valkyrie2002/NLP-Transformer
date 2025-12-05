@@ -45,15 +45,23 @@ _models/
 *.ckpt
 *.safetensors
 
-# Data files
+# Data files - Allow processed data but ignore raw data
 _data/raw/
 _data/processed/
-_data/processed_3labels/
-*.csv
-*.json
-*.txt
+# DON'T ignore data/processed_3labels/ - we want to upload this!
 
-# Database
+# Ignore CSV files everywhere EXCEPT in data/processed_3labels/
+*.csv
+!data/processed_3labels/*.csv
+
+# Ignore JSON but allow specific files
+*.json
+
+# Ignore TXT files but allow requirements.txt
+*.txt
+!requirements.txt
+
+# Database - Only ignore runtime database
 *.db
 *.sqlite
 *.sqlite3
@@ -73,7 +81,6 @@ desktop.ini
 *.temp
 *.bak
 *.backup
-*~
 
 # Streamlit
 .streamlit/
