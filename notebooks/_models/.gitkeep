@@ -1,0 +1,5 @@
+# This file ensures the _models directory is tracked by Git
+# even when it's empty or contains only ignored files.
+# 
+# After downloading the model from Google Drive,
+# extract it to: notebooks/_models/phobert-3-labels-final/

@@ -37,8 +37,9 @@ env/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# Model files (too large for git)
-_models/
+# Model files (ignore large files but keep directory structure)
+_models/*
+!_models/.gitkeep
 *.bin
 *.pt
 *.pth
