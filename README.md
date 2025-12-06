@@ -174,10 +174,12 @@ pip install -r requirements.txt
 Có 2 cách:
 
 **Cách 1: Tải model sẵn có** (Khuyến nghị)
-```bash
-# Tải từ Google Drive hoặc Hugging Face Hub
-# Giải nén vào thư mục notebooks/_models/phobert-3-labels-final/
-```
+
+📥 **[Tải model từ Google Drive](https://drive.google.com/drive/folders/1LBy72fiDHi-u9GQqwO1ZwHStuTkjwj8W?usp=sharing)**
+
+Sau khi tải về:
+1. Giải nén file ZIP
+2. Đặt thư mục vào `notebooks/_models/phobert-3-labels-final/`
 
 **Cách 2: Huấn luyện từ đầu**
 ```bash
@@ -337,7 +339,7 @@ MIT License - Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
 ## 📞 Contact
 
 **Nguyễn Hồ Khánh An**
-- Email: 3121410048@student.sgu.edu.vn
-- GitHub: [@nguyenhokhanan](https://github.com/nguyenhokhanan)
+- Email: khanhan280103@gmail.com
+- GitHub: [@Valkyrie2002](https://github.com/Valkyrie2002)
 
 ---
